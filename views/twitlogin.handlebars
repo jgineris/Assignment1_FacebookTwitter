@@ -19,12 +19,22 @@
 
 <body>
     <div class="container">
-      	<h1>- Page 1 - </h1>
+      	<h1>- Hi {{user.name}} You have successfully logged into Twitter! </h1>
     </div>
 
-    <a href = "/auth/facebook">Login to Facebook</a> <br><br>
-    <a href = "/auth/twitter">Login to Twitter</a>
+    <div class="container">
+        <h2>Here's some information about you:</h2>        
+        <p>You created your profile: {{user.created_at}}. </p>
+        <p>You have {{user.followers_count}} followers. </p>
+        <p>You have {{user.friends_count}} friends. </p>
+        <p>You have made {{user.statuses_count}} status update(s). </p>
 
+    </div>
+
+     <!-- <a href="/">Discover the percentage your friends with a particular relationship status...</a> -->
+    
+
+  
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
 </body>

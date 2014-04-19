@@ -8,6 +8,7 @@ var app = express();
 //route files to load
 var index = require('./routes/index');
 var fblogin = require('./routes/fblogin');
+var twitlogin = require('./routes/twitlogin');
 
 //Configures the Template engine
 app.engine('handlebars', handlebars());
@@ -32,9 +33,13 @@ app.configure('production', function(){
 app.get('/', index.view); //boilerplate
 app.post('/', index.view);
 
+//Facebook
 app.get('/auth/facebook', fblogin.fbauthlogin);
 app.get('/fblogin', fblogin.fbuser);
 app.get('/relationships', fblogin.fbrelationships);
+
+//Twitter
+app.get('/auth/twitter', twitlogin.twitauthlogin);
 
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
