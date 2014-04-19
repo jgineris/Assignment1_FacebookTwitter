@@ -42,7 +42,7 @@ app.get('/relationships', fblogin.fbrelationships);
 app.get('/auth/twitter', twitlogin.twitauthlogin);
 
 //set environment ports and start application
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });
