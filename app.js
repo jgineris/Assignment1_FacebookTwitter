@@ -7,10 +7,7 @@ var app = express();
 
 //route files to load
 var index = require('./routes/index');
-
-//database setup - uncomment to set up your database
-//var mongoose = require('mongoose');
-//mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/DATABASE1);
+var fblogin = require('./routes/fblogin');
 
 //Configures the Template engine
 app.engine('handlebars', handlebars());
@@ -19,8 +16,26 @@ app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
 
+//fbgraph
+app.use(express.methodOverride());
+app.use(app.router);
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+app.configure('production', function(){
+  app.use(express.errorHandler());
+});
+
+
 //routes
-app.get('/', index.view);
+app.get('/', index.view); //boilerplate
+app.post('/', index.view);
+
+app.get('/auth/facebook', fblogin.fbauthlogin);
+app.get('/fblogin', fblogin.fbuser);
+app.get('/relationships', fblogin.fbrelationships);
+
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
 http.createServer(app).listen(app.get('port'), function(){
