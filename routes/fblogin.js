@@ -4,7 +4,7 @@ var conf = {
     client_id:  	'385717044904347'    
   , client_secret:  'e1ccaddb495e90c4b9b37ba18ebc169e'
   , scope:          'user_about_me, user_birthday, user_location, friends_relationships'
-  , redirect_uri:   'http://localhost:3000/auth/facebook'
+  , redirect_uri:   'http://secret-meadow-8271.herokuapp.com/auth/facebook'
 };
 
 
